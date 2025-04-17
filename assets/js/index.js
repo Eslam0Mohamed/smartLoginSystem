@@ -40,10 +40,14 @@ function addInStorage() {
   }
   else {
     // submetBtn.previousElementSibling.classList.remove("d-none")
-    var mailexisted = document.createElement("p")
-    mailexisted.textContent = "your mail is existed"
-    mailexisted.classList.add("text-danger")
-    submetBtn.before(mailexisted)
+    var existerror = document.querySelector(".email-exists-msg");
+    if (!existerror) {
+      var mailexisted = document.createElement("p")
+      mailexisted.textContent = "your mail is existed"
+      mailexisted.classList.add("text-danger", "email-exists-msg")
+      submetBtn.before(mailexisted)
+    }
+
   }
 }
 function validate(regex, element) {
@@ -65,16 +69,12 @@ function validate(regex, element) {
 function mailvalidate() {
   for (var i = 0; i < allUsers.length; i++) {
     if (allUsers[i].email == emailInput.value) {
-
       // it false as when this function called in add in storage function it not work and enter in else statement in top
       return false;
     }
-    else {
-      // it true as when this function called in add in storage function it give us true and enter in if statement in top
-      return true;
-    }
+    // it true as when this function called in add in storage function it give us true and enter in if statement in top
   }
-
+  return true
 }
 // console.log(nameInput,emailInput,passwordInput,submetBtn)
 function signupPage() {
@@ -82,19 +82,22 @@ function signupPage() {
   box.classList.remove("d-none")
 }
 function login() {
+  var isfound = false
   for (var i = 0; i < allUsers.length; i++) {
     if ((allUsers[i].name.toLowerCase() === loginNameInput.value.toLowerCase()) && (allUsers[i].password === loginPasswordInput.value)) {
+      isfound = true;
       console.log("correct name ");
       loginBox.classList.add("d-none");
       var userName = document.createElement("p");
       userName.innerHTML = "Welcom Mr " + loginNameInput.value;
+      userName.classList.add("position-absolute", "start-50", "top-50","translate-middle","text-info","fs-3")
       container.append(userName);
       break;
     }
-else{
- alert("Your Data not Exist")
-}
 
+  }
+  if (!isfound) {
+    alert("Your Data not Exist")
   }
 
 }
