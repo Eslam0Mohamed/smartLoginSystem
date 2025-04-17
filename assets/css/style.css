@@ -1,0 +1,26 @@
+main{
+  background-color: #24353f;
+  height: 100vh;
+}
+h1{
+  color: #17a2b8;
+}
+.form-control,.form-control:focus {
+  background-color: transparent;
+}
+.form-control::placeholder{
+  color: #ced4da;
+}
+input{
+  color: #fff !important;
+}
+.login-box,.box{
+  background-color: #24353f;
+  box-shadow: -5px 2px 54px -9px rgba(0, 0, 0, 1);
+}
+
+.btn-outline-info{
+  background-color: transparent;
+  width: 100%;
+  text-align: center;
+}
